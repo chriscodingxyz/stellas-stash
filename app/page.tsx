@@ -1,4 +1,4 @@
-import getPostsAction from "@/server/actions/get-posts";
+import { createPostAction, getPostsAction } from "@/server/actions/actions";
 import Image from "next/image";
 
 export default async function Home() {
@@ -14,6 +14,15 @@ export default async function Home() {
         {success.map((post) => (
           <div key={post.id}>{post.title}</div>
         ))}
+        <form action={createPostAction}>
+          <input
+            type="text"
+            name="title"
+            className="text-black"
+            placeholder="title"
+          />
+          <button type="submit">Submit</button>
+        </form>
       </main>
     );
 }
