@@ -1,3 +1,4 @@
+import PostButton from "@/components/PostButton";
 import { createPostAction, getPostsAction } from "@/server/actions/actions";
 import Image from "next/image";
 
@@ -11,6 +12,7 @@ export default async function Home() {
   if (success)
     return (
       <main>
+        {Date.now()}
         {success.map((post) => (
           <div key={post.id}>{post.title}</div>
         ))}
@@ -21,7 +23,7 @@ export default async function Home() {
             className="text-black"
             placeholder="title"
           />
-          <button type="submit">Submit</button>
+          <PostButton pendingText="Posting...">Submit</PostButton>
         </form>
       </main>
     );
